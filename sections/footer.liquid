@@ -1,0 +1,52 @@
+
+<footer class="bg-black text-white pt-24 pb-12 border-t border-white/5 relative z-10">
+  <div class="container mx-auto px-6">
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-16 mb-24">
+      <div>
+        <a href="/" class="flex items-center space-x-3 mb-10 group">
+          <span class="font-black text-3xl tracking-tighter uppercase italic">
+            Smart<span class="text-[#C5A059]">Duka</span>
+          </span>
+        </a>
+        <p class="text-gray-400 text-sm leading-relaxed mb-10 max-w-xs font-medium">
+          The premier hub for genuine electronics in Nairobi. Authorized dealer for Hisense and Apple.
+        </p>
+      </div>
+
+      <div>
+        <h4 class="font-black text-xs uppercase tracking-[0.4em] text-[#C5A059] mb-10">Customer Service</h4>
+        <ul class="space-y-5 text-sm font-bold">
+          {% for link in linklists.footer.links %}
+            <li><a href="{{ link.url }}" class="text-gray-400 hover:text-white transition-colors">{{ link.title }}</a></li>
+          {% endfor %}
+        </ul>
+      </div>
+
+      <div>
+        <h4 class="font-black text-xs uppercase tracking-[0.4em] text-[#C5A059] mb-10">Nairobi Showroom</h4>
+        <p class="text-gray-400 text-sm font-medium">Smart House, 4th Floor,<br/>Kimathi Street, Nairobi CBD</p>
+        <p class="text-[#C5A059] font-black mt-4">+254 742 721 309</p>
+      </div>
+
+      <div>
+        <h4 class="font-black text-xs uppercase tracking-[0.4em] text-[#C5A059] mb-10">Our Guarantee</h4>
+        <div class="bg-white/5 p-8 rounded-3xl border border-white/10">
+          <p class="text-xs text-gray-400 leading-relaxed font-medium">
+            Verified Authorized Retailer. Same-day dispatch within the Nairobi Metro area.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <div class="pt-10 border-t border-white/5 text-center text-[10px] font-black uppercase tracking-[0.4em] text-gray-600">
+      <p>© {{ 'now' | date: "%Y" }} Smart Duka Electronics. Kenyan Retail Excellence.</p>
+    </div>
+  </div>
+</footer>
+
+{% schema %}
+{
+  "name": "Footer",
+  "settings": []
+}
+{% endschema %}

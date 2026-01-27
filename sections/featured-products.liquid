@@ -1,0 +1,28 @@
+
+<section class="py-32 bg-[#020617]">
+  <div class="container mx-auto px-12">
+    <div class="flex justify-between items-end mb-20">
+      <div>
+        <span class="text-[#C5A059] text-[10px] font-black uppercase tracking-[0.5em] mb-4 block">Our Inventory</span>
+        <h2 class="text-6xl font-black font-playfair italic text-white tracking-tighter">Latest <span class="text-slate-500">Vault.</span></h2>
+      </div>
+      <a href="/collections/all" class="text-[10px] font-black uppercase tracking-widest text-white border-b border-[#C5A059] pb-2">Full Catalog</a>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
+      {% for product in collections[section.settings.collection].products limit: 8 %}
+        {% render 'product-card', product: product %}
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Featured Products",
+  "settings": [
+    { "type": "collection", "id": "collection", "label": "Collection" }
+  ],
+  "presets": [{ "name": "Featured Products" }]
+}
+{% endschema %}

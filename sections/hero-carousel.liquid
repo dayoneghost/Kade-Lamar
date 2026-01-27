@@ -1,0 +1,39 @@
+
+<section class="relative w-full h-[80vh] bg-[#020617] overflow-hidden flex items-center">
+  <div class="absolute inset-0 z-0">
+    {% if section.settings.image != blank %}
+      <img src="{{ section.settings.image | img_url: '2000x' }}" class="w-full h-full object-cover opacity-40">
+    {% else %}
+      <div class="w-full h-full bg-slate-900 opacity-40"></div>
+    {% endif %}
+    <div class="absolute inset-0 bg-gradient-to-t from-[#020617] via-transparent to-transparent"></div>
+  </div>
+
+  <div class="container mx-auto px-12 relative z-10">
+    <div class="max-w-4xl">
+      <span class="text-[#C5A059] text-[10px] font-black uppercase tracking-[0.8em] mb-8 block">{{ section.settings.subtitle }}</span>
+      <h1 class="text-6xl md:text-9xl font-black text-white font-playfair italic mb-8 leading-[0.9] tracking-tighter">
+        {{ section.settings.title | replace: ' ', '<br/>' }}
+      </h1>
+      <p class="text-slate-300 text-xl mb-12 max-w-xl font-medium">{{ section.settings.description }}</p>
+      <a href="{{ section.settings.link }}" class="inline-block bg-[#C5A059] text-slate-950 px-14 py-6 rounded-full font-black uppercase tracking-[0.3em] text-[10px] hover:bg-white transition-all shadow-2xl">
+        {{ section.settings.button_text }}
+      </a>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Hero Carousel",
+  "settings": [
+    { "type": "text", "id": "title", "label": "Title", "default": "Upgrade Your Home" },
+    { "type": "text", "id": "subtitle", "label": "Subtitle", "default": "New Arrivals" },
+    { "type": "textarea", "id": "description", "label": "Description", "default": "Premium electronics from top brands like Hisense and Apple." },
+    { "type": "image_picker", "id": "image", "label": "Background Image" },
+    { "type": "url", "id": "link", "label": "Button Link" },
+    { "type": "text", "id": "button_text", "label": "Button Text", "default": "Shop Now" }
+  ],
+  "presets": [{ "name": "Hero Carousel" }]
+}
+{% endschema %}
