@@ -1,27 +1,36 @@
 
-<section class="py-24 bg-[#0F172A]">
-  <div class="container mx-auto px-12">
-    <div class="text-center mb-20">
+<section class="py-24 md:py-40 bg-[#020617] border-t border-white/5">
+  <div class="container mx-auto px-6 lg:px-12">
+    <div class="text-center mb-20 md:mb-32">
       <span class="text-[#C5A059] text-[10px] font-black uppercase tracking-[0.8em] mb-4 block">Hybrid Horizon</span>
-      <h2 class="text-5xl font-black font-playfair italic text-white tracking-tighter">Bespoke <span class="text-slate-500">Categories.</span></h2>
+      <h2 class="text-5xl md:text-7xl font-black font-playfair italic text-white tracking-tighter">Bespoke <span class="text-slate-500">Categories.</span></h2>
     </div>
 
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-10">
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-12">
       {% for block in section.blocks %}
         {% assign collection = collections[block.settings.collection] %}
-        <a href="{{ collection.url }}" class="relative h-[400px] rounded-[32px] overflow-hidden group border border-white/5">
-          {% if collection.image %}
-            <img src="{{ collection.image | img_url: '800x800' }}" class="absolute inset-0 w-full h-full object-cover opacity-40 group-hover:scale-110 transition-transform duration-1000">
-          {% else %}
-            <div class="absolute inset-0 bg-slate-800 opacity-40"></div>
-          {% endif %}
-          <div class="absolute inset-0 bg-gradient-to-t from-slate-950 via-transparent to-transparent"></div>
-          
-          <div class="absolute inset-0 p-10 flex flex-col justify-end">
-            <h3 class="text-3xl font-black font-playfair italic text-white mb-2">{{ collection.title }}</h3>
-            <p class="text-[10px] font-black uppercase tracking-widest text-[#C5A059]">Browse Collection</p>
-          </div>
-        </a>
+        {% if collection != blank %}
+          <a href="{{ collection.url }}" class="relative h-[400px] md:h-[500px] rounded-[2.5rem] md:rounded-[4rem] overflow-hidden group border border-white/5 reveal-item">
+            {% if collection.image %}
+              <img src="{{ collection.image | img_url: '1200x1200' }}" class="absolute inset-0 w-full h-full object-cover opacity-40 grayscale group-hover:grayscale-0 group-hover:opacity-60 group-hover:scale-110 transition-all duration-1000">
+            {% else %}
+              <div class="absolute inset-0 bg-slate-800 opacity-40"></div>
+            {% endif %}
+            <div class="absolute inset-0 bg-gradient-to-t from-slate-950 via-transparent to-transparent"></div>
+            
+            <div class="absolute inset-0 p-10 md:p-16 flex flex-col justify-end">
+              <span class="text-[#C5A059] text-[9px] font-black uppercase tracking-[0.6em] mb-4 block">Department</span>
+              <h3 class="text-3xl md:text-4xl font-black font-playfair italic text-white mb-6 leading-tight">{{ collection.title }}</h3>
+              
+              <div class="flex items-center space-x-4 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+                <span class="text-[10px] font-black uppercase tracking-widest text-white">Browse Collection</span>
+                <div class="w-10 h-10 rounded-full bg-[#C5A059] flex items-center justify-center text-slate-950">
+                   <i class="fas fa-arrow-right"></i>
+                </div>
+              </div>
+            </div>
+          </a>
+        {% endif %}
       {% endfor %}
     </div>
   </div>

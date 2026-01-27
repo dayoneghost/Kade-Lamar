@@ -1,51 +1,151 @@
 
-<section class="relative w-full h-[85vh] bg-[#020617] overflow-hidden flex items-center">
-  <div class="absolute inset-0 z-0">
-    {% if section.settings.image != blank %}
-      <img src="{{ section.settings.image | img_url: '2000x' }}" class="w-full h-full object-cover opacity-40">
-    {% else %}
-      <div class="w-full h-full bg-slate-900 opacity-20"></div>
-    {% endif %}
-    <div class="absolute inset-0 bg-gradient-to-t from-[#0F172A] via-transparent to-transparent"></div>
-    <div class="absolute inset-0 bg-gradient-to-r from-[#0F172A] via-transparent to-transparent"></div>
-  </div>
+<section id="hero-{{ section.id }}" class="relative w-full h-screen bg-[#020617] overflow-hidden">
+  <div class="slides-container relative w-full h-full">
+    {% for block in section.blocks %}
+      <div class="hero-slide absolute inset-0 transition-all duration-1000 ease-[cubic-bezier(0.22,1,0.36,1)] {% if forloop.first %}opacity-100 scale-100 z-10{% else %}opacity-0 scale-110 z-0{% endif %}" data-index="{{ forloop.index0 }}" {{ block.shopify_attributes }}>
+        <div class="absolute inset-0 z-0">
+          {% if block.settings.image != blank %}
+            <img src="{{ block.settings.image | img_url: '2000x' }}" class="w-full h-full object-cover opacity-40">
+          {% else %}
+            <div class="w-full h-full bg-slate-900 opacity-20"></div>
+          {% endif %}
+          <div class="absolute inset-0 bg-gradient-to-t from-[#0F172A] via-transparent to-transparent"></div>
+          <div class="absolute inset-0 bg-gradient-to-r from-[#0F172A] via-transparent to-transparent"></div>
+        </div>
 
-  <div class="container mx-auto px-6 md:px-12 relative z-10">
-    <div class="max-w-4xl space-y-10">
-      <div>
-        <span class="text-[#C5A059] text-[10px] font-black uppercase tracking-[0.8em] mb-8 block">
-          {{ section.settings.subtitle }}
-        </span>
-        <h1 class="text-7xl md:text-9xl font-black text-white font-playfair italic mb-8 leading-[0.85] tracking-tighter">
-          {{ section.settings.title | replace: ' ', '<br/>' }}
-        </h1>
-        <p class="text-slate-300 text-xl md:text-2xl mb-12 max-w-xl font-medium leading-relaxed">
-          {{ section.settings.description }}
-        </p>
-        <div class="flex flex-col sm:flex-row items-start sm:items-center space-y-6 sm:space-y-0 sm:space-x-8">
-          <a href="{{ section.settings.link }}" class="bg-[#C5A059] text-slate-950 px-14 py-6 rounded-full font-black uppercase tracking-[0.3em] text-[10px] hover:bg-white transition-all shadow-2xl">
-            {{ section.settings.button_text }}
-          </a>
-          <button class="group flex items-center space-x-4 text-white">
-            <span class="text-[10px] font-black uppercase tracking-[0.3em]">Our Story</span>
-            <div class="w-12 h-[1px] bg-white/30 group-hover:w-20 group-hover:bg-[#C5A059] transition-all"></div>
-          </button>
+        <div class="container mx-auto px-6 md:px-12 relative z-10 h-full flex items-center">
+          <div class="max-w-4xl space-y-10">
+            <div class="slide-content">
+              <span class="text-[#C5A059] text-[10px] font-black uppercase tracking-[0.8em] mb-8 block translate-y-8 opacity-0 transition-all duration-700 delay-300">
+                {{ block.settings.subtitle }}
+              </span>
+              <h1 class="text-6xl md:text-9xl font-black text-white font-playfair italic mb-8 leading-[0.85] tracking-tighter translate-y-8 opacity-0 transition-all duration-700 delay-500">
+                {{ block.settings.title | replace: ' ', '<br/>' }}
+              </h1>
+              <p class="text-slate-300 text-lg md:text-2xl mb-12 max-w-xl font-medium leading-relaxed translate-y-8 opacity-0 transition-all duration-700 delay-700">
+                {{ block.settings.description }}
+              </p>
+              <div class="flex flex-col sm:flex-row items-start sm:items-center space-y-6 sm:space-y-0 sm:space-x-8 translate-y-8 opacity-0 transition-all duration-700 delay-900">
+                <a href="{{ block.settings.link }}" class="bg-[#C5A059] text-slate-950 px-14 py-6 rounded-full font-black uppercase tracking-[0.3em] text-[10px] hover:bg-white transition-all shadow-2xl active:scale-95">
+                  {{ block.settings.button_text }}
+                </a>
+                <button class="group flex items-center space-x-4 text-white">
+                  <span class="text-[10px] font-black uppercase tracking-[0.3em]">Our Story</span>
+                  <div class="w-12 h-[1px] bg-white/30 group-hover:w-20 group-hover:bg-[#C5A059] transition-all"></div>
+                </button>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
+    {% endfor %}
+  </div>
+
+  <div class="absolute bottom-10 right-6 md:bottom-16 md:right-16 z-30 flex items-center space-x-4 md:space-x-6">
+    <button class="prev-slide w-12 h-12 md:w-16 md:h-16 border border-white/10 rounded-full flex items-center justify-center text-white hover:bg-white hover:text-slate-900 transition-all active:scale-90">
+      <i class="fas fa-chevron-left text-sm"></i>
+    </button>
+    <div class="pagination-dots flex space-x-2 md:space-x-3">
+      {% for block in section.blocks %}
+        <button class="dot h-1.5 transition-all duration-700 rounded-full {% if forloop.first %}w-10 md:w-16 bg-[#C5A059]{% else %}w-3 md:w-4 bg-white/20{% endif %}" data-index="{{ forloop.index0 }}"></button>
+      {% endfor %}
     </div>
+    <button class="next-slide w-12 h-12 md:w-16 md:h-16 border border-white/10 rounded-full flex items-center justify-center text-white hover:bg-white hover:text-slate-900 transition-all active:scale-90">
+      <i class="fas fa-chevron-right text-sm"></i>
+    </button>
   </div>
 </section>
+
+<style>
+  .hero-slide.opacity-100 .slide-content span,
+  .hero-slide.opacity-100 .slide-content h1,
+  .hero-slide.opacity-100 .slide-content p,
+  .hero-slide.opacity-100 .slide-content div {
+    transform: translateY(0);
+    opacity: 1;
+  }
+</style>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const section = document.getElementById('hero-{{ section.id }}');
+    if (!section) return;
+    const slides = section.querySelectorAll('.hero-slide');
+    const dots = section.querySelectorAll('.dot');
+    const prevBtn = section.querySelector('.prev-slide');
+    const nextBtn = section.querySelector('.next-slide');
+    let currentIndex = 0;
+    let autoRotate;
+
+    function showSlide(index) {
+      slides.forEach((slide, i) => {
+        if (i === index) {
+          slide.classList.add('opacity-100', 'scale-100', 'z-10');
+          slide.classList.remove('opacity-0', 'scale-110', 'z-0');
+        } else {
+          slide.classList.remove('opacity-100', 'scale-100', 'z-10');
+          slide.classList.add('opacity-0', 'scale-110', 'z-0');
+        }
+      });
+
+      dots.forEach((dot, i) => {
+        if (i === index) {
+          dot.classList.add('w-10', 'md:w-16', 'bg-[#C5A059]');
+          dot.classList.remove('w-3', 'md:w-4', 'bg-white/20');
+        } else {
+          dot.classList.remove('w-10', 'md:w-16', 'bg-[#C5A059]');
+          dot.classList.add('w-3', 'md:w-4', 'bg-white/20');
+        }
+      });
+      currentIndex = index;
+    }
+
+    function nextSlide() {
+      let next = (currentIndex + 1) % slides.length;
+      showSlide(next);
+    }
+
+    function prevSlide() {
+      let prev = (currentIndex - 1 + slides.length) % slides.length;
+      showSlide(prev);
+    }
+
+    function startTimer() {
+      clearInterval(autoRotate);
+      autoRotate = setInterval(nextSlide, 8000);
+    }
+
+    nextBtn.addEventListener('click', () => { nextSlide(); startTimer(); });
+    prevBtn.addEventListener('click', () => { prevSlide(); startTimer(); });
+    dots.forEach(dot => {
+      dot.addEventListener('click', () => {
+        showSlide(parseInt(dot.dataset.index));
+        startTimer();
+      });
+    });
+
+    startTimer();
+  });
+</script>
 
 {% schema %}
 {
   "name": "Hero Carousel",
-  "settings": [
-    { "type": "text", "id": "title", "label": "Title", "default": "Your Home" },
-    { "type": "text", "id": "subtitle", "label": "Subtitle", "default": "New Arrivals" },
-    { "type": "textarea", "id": "description", "label": "Description", "default": "Premium electronics from top brands like Hisense and Apple." },
-    { "type": "image_picker", "id": "image", "label": "Background Image" },
-    { "type": "url", "id": "link", "label": "Button Link" },
-    { "type": "text", "id": "button_text", "label": "Button Text", "default": "Shop Now" }
+  "max_blocks": 5,
+  "settings": [],
+  "blocks": [
+    {
+      "type": "slide",
+      "name": "Slide",
+      "settings": [
+        { "type": "text", "id": "title", "label": "Title", "default": "Your Home" },
+        { "type": "text", "id": "subtitle", "label": "Subtitle", "default": "New Arrivals" },
+        { "type": "textarea", "id": "description", "label": "Description", "default": "Premium electronics from top brands like Hisense and Apple." },
+        { "type": "image_picker", "id": "image", "label": "Background Image" },
+        { "type": "url", "id": "link", "label": "Button Link" },
+        { "type": "text", "id": "button_text", "label": "Button Text", "default": "Shop Now" }
+      ]
+    }
   ],
   "presets": [{ "name": "Hero Carousel" }]
 }

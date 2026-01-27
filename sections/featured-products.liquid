@@ -1,22 +1,28 @@
 
-<section class="py-32 bg-[#0F172A] relative overflow-hidden">
+<section class="py-24 md:py-40 bg-[#0F172A] relative overflow-hidden">
   <div class="absolute top-0 left-0 w-full h-64 bg-gradient-to-b from-[#020617] to-transparent opacity-50"></div>
   <div class="container mx-auto px-6 md:px-12 relative z-10">
-    <div class="flex flex-col md:flex-row justify-between items-start md:items-end mb-24">
+    <div class="flex flex-col md:flex-row justify-between items-start md:items-end mb-20 md:mb-32">
       <div class="max-w-3xl">
         <span class="text-[#C5A059] text-[10px] font-black uppercase tracking-[0.5em] mb-6 block">Our Collection</span>
-        <h2 class="text-6xl md:text-8xl font-black tracking-tighter mb-8 font-playfair italic leading-none text-white">Latest <br/><span class="text-slate-400">Inventory.</span></h2>
+        <h2 class="text-5xl md:text-8xl font-black tracking-tighter mb-8 font-playfair italic leading-none text-white">Latest <br/><span class="text-slate-400">Inventory.</span></h2>
         <p class="text-lg md:text-xl text-slate-400 font-medium max-w-xl">Browse authentic electronics curated for modern Kenyan living.</p>
       </div>
-      <a href="/collections/all" class="text-[10px] font-black uppercase tracking-widest text-white border-b border-[#C5A059] pb-4 group">
-        Full Collection <i class="fas fa-arrow-right ml-3 group-hover:translate-x-2 transition-transform"></i>
+      <a href="/collections/{{ section.settings.collection }}" class="text-[10px] font-black uppercase tracking-widest text-white border-b border-[#C5A059] pb-4 group">
+        Full Collection <i class="fas fa-arrow-right ml-3 group-hover:translate-x-2 transition-transform text-[#C5A059]"></i>
       </a>
     </div>
 
-    <div class="grid grid-cols-2 lg:grid-cols-4 gap-x-8 gap-y-24">
-      {% for product in collections[section.settings.collection].products limit: 8 %}
-        {% render 'product-card', product: product, index: forloop.index %}
-      {% endfor %}
+    <div class="grid grid-cols-2 lg:grid-cols-4 gap-x-6 gap-y-16 md:gap-x-12 md:gap-y-24">
+      {% assign collection = collections[section.settings.collection] %}
+      {% if collection != blank %}
+        {% for product in collection.products limit: 12 %}
+          {% render 'product-card', product: product, index: forloop.index %}
+        {% endfor %}
+      {% else %}
+        <!-- Fallback if no collection selected -->
+        <p class="text-slate-500 col-span-full">Please select a collection in the theme customizer to display products.</p>
+      {% endif %}
     </div>
   </div>
 </section>

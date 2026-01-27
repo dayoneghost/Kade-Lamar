@@ -13,6 +13,7 @@ body {
   background: radial-gradient(circle at 70% 20%, #1e293b 0%, #0F172A 50%, #020617 100%);
   color: #f8fafc;
   -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
 }
 
 .font-playfair { font-family: 'Playfair Display', serif; }
@@ -30,3 +31,13 @@ body {
 
 .hide-scrollbar::-webkit-scrollbar { display: none; }
 .hide-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+
+/* Animations */
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(30px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.reveal-item {
+  animation: fadeInUp 0.8s ease-out forwards;
+}
