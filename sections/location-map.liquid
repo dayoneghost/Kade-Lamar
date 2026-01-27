@@ -1,0 +1,52 @@
+
+<section class="py-32 bg-[#0F172A] border-t border-white/5">
+  <div class="container mx-auto px-12">
+    <div class="grid lg:grid-cols-2 gap-20 items-center">
+      <div class="space-y-10">
+        <span class="text-[#C5A059] text-[10px] font-black uppercase tracking-[0.8em] block">Visit Us</span>
+        <h2 class="text-5xl md:text-8xl font-black font-playfair italic text-white tracking-tighter leading-[0.85]">Flagship <br/><span class="text-slate-400">Showroom.</span></h2>
+        
+        <div class="space-y-8">
+          <div class="flex items-start space-x-6">
+            <div class="w-14 h-14 bg-[#C5A059]/10 rounded-2xl flex items-center justify-center text-[#C5A059]">
+              <i class="fas fa-map-pin text-xl"></i>
+            </div>
+            <div>
+              <h4 class="text-xl font-bold text-white mb-2">Smart House, 4th Floor</h4>
+              <p class="text-slate-400 font-medium">Kimathi Street, Nairobi CBD. Conveniently located for all your electronic needs.</p>
+            </div>
+          </div>
+          <div class="flex items-center space-x-6">
+            <div class="w-14 h-14 bg-[#C5A059]/10 rounded-2xl flex items-center justify-center text-[#C5A059]">
+              <i class="fas fa-phone-alt text-xl"></i>
+            </div>
+            <div>
+              <h4 class="text-xl font-bold text-white mb-2">Call to Reserve</h4>
+              <p class="text-[#C5A059] font-black">+254 742 721 309</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="relative aspect-square bg-slate-950 rounded-[4rem] overflow-hidden border border-white/5 shadow-2xl">
+        <iframe 
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m13!1m1!1s0x182f10d616853285:0xbd910609339e38e!2sSmart%20Duka%20Electronics!5e0!3m2!1sen!2ske!4v1700000000000!5m2!1sen!2ske&dark_mode=true" 
+          width="100%" 
+          height="100%" 
+          style="border:0; filter: invert(90%) hue-rotate(180deg) brightness(95%) contrast(90%);" 
+          allowfullscreen="" 
+          loading="lazy">
+        </iframe>
+        <div class="absolute inset-0 pointer-events-none border-[20px] border-[#0F172A]"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Location Map",
+  "settings": [],
+  "presets": [{ "name": "Location Map" }]
+}
+{% endschema %}

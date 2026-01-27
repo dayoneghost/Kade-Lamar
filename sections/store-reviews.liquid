@@ -1,0 +1,50 @@
+
+<section class="py-32 bg-[#020617] border-t border-white/5">
+  <div class="container mx-auto px-12">
+    <div class="text-center mb-24">
+      <span class="text-[#C5A059] text-[10px] font-black uppercase tracking-[0.8em] mb-4 block">Testimonials</span>
+      <h2 class="text-5xl font-black font-playfair italic text-white tracking-tighter">Verified <span class="text-slate-500">Buyers.</span></h2>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+      {% for block in section.blocks %}
+        <div class="bg-white/5 p-12 rounded-[3rem] border border-white/5 relative group overflow-hidden">
+          <div class="flex space-x-1 mb-8">
+            {% for i in (1..5) %}
+              <i class="fas fa-star text-[#C5A059] text-xs"></i>
+            {% endfor %}
+          </div>
+          <p class="text-xl text-slate-300 font-medium italic leading-relaxed mb-8">"{{ block.settings.review_text }}"</p>
+          <div class="flex items-center space-x-4 border-t border-white/5 pt-8">
+            <div class="w-12 h-12 bg-[#C5A059] rounded-full flex items-center justify-center font-black text-slate-950">
+              {{ block.settings.author | slice: 0 }}
+            </div>
+            <div>
+              <p class="font-bold text-white">{{ block.settings.author }}</p>
+              <p class="text-[9px] font-black uppercase tracking-widest text-slate-500">{{ block.settings.date }}</p>
+            </div>
+          </div>
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Store Reviews",
+  "settings": [],
+  "blocks": [
+    {
+      "type": "review",
+      "name": "Review",
+      "settings": [
+        { "type": "textarea", "id": "review_text", "label": "Review Text", "default": "Best prices for Hisense in Nairobi!" },
+        { "type": "text", "id": "author", "label": "Author", "default": "David M." },
+        { "type": "text", "id": "date", "label": "Date", "default": "2 days ago" }
+      ]
+    }
+  ],
+  "presets": [{ "name": "Store Reviews" }]
+}
+{% endschema %}
