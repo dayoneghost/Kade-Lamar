@@ -1,17 +1,30 @@
 
-<nav class="fixed top-0 left-0 right-0 z-[110] transition-all duration-500 px-6 lg:px-12 bg-[#020617] border-b border-white/5 py-5">
+<header id="site-header" class="fixed top-0 left-0 right-0 z-[110] transition-all duration-500 px-6 lg:px-12 bg-[#020617] border-b border-white/5 py-5">
   <div class="container mx-auto flex items-center justify-between">
-    <a href="/" class="flex items-center group">
-      <div class="ml-3 flex flex-col justify-center">
-        <span class="font-playfair text-xl md:text-2xl font-black italic text-white tracking-tighter uppercase leading-none whitespace-nowrap">
-          Smart<span class="text-[#C5A059]">Duka</span>
-        </span>
-        <span class="text-[8px] md:text-[9px] font-black uppercase tracking-[0.4em] text-[#C5A059] mt-1 hidden sm:block">
-          Premium Electronics.
-        </span>
-      </div>
-    </a>
+    <!-- Logo Section -->
+    <div class="flex items-center">
+      <a href="/" class="flex items-center group">
+        <div class="relative h-12 md:h-16 w-auto flex items-center justify-center">
+          <img 
+            src="{{ 'logo-smart.png' | asset_url }}" 
+            alt="{{ shop.name }}" 
+            class="h-full w-auto object-contain transition-transform group-hover:scale-110 drop-shadow-[0_2px_10px_rgba(197,160,89,0.3)]"
+            style="min-width: 48px;"
+            onerror="this.style.display='none'"
+          >
+        </div>
+        <div class="ml-3 flex flex-col justify-center">
+          <span class="font-playfair text-xl md:text-2xl font-black italic text-white tracking-tighter uppercase leading-none whitespace-nowrap">
+            Smart<span class="text-[#C5A059]">Duka</span>
+          </span>
+          <span class="text-[8px] md:text-[9px] font-black uppercase tracking-[0.4em] text-[#C5A059] mt-1 hidden sm:block">
+            Premium Shopping.
+          </span>
+        </div>
+      </a>
+    </div>
 
+    <!-- Desktop Navigation -->
     <div class="hidden lg:flex flex-grow justify-center items-center space-x-10">
       {% for link in linklists.main-menu.links %}
         <a href="{{ link.url }}" class="relative text-[10px] uppercase tracking-[0.3em] font-black text-slate-300 hover:text-[#C5A059] transition-all group py-2">
@@ -21,19 +34,107 @@
       {% endfor %}
     </div>
 
-    <div class="flex items-center space-x-8">
-      <a href="/cart" class="relative p-2 text-white hover:text-[#C5A059]">
+    <!-- Action Icons -->
+    <div class="flex items-center space-x-2 md:space-x-8">
+      <!-- Cart Icon -->
+      <a href="/cart" class="relative p-2 text-white hover:text-[#C5A059] transition-all active:scale-90">
         <i class="fas fa-shopping-bag text-xl"></i>
-        <span class="absolute -top-1 -right-1 bg-[#C5A059] text-slate-900 text-[8px] font-black w-4 h-4 rounded-full flex items-center justify-center shadow-lg">
-          {{ cart.item_count }}
-        </span>
+        {% if cart.item_count > 0 %}
+          <span class="absolute -top-1 -right-1 bg-[#C5A059] text-slate-900 text-[8px] font-black w-4 h-4 rounded-full flex items-center justify-center shadow-lg">
+            {{ cart.item_count }}
+          </span>
+        {% endif %}
       </a>
-      <a href="/account" class="text-white hover:text-[#C5A059] transition-all">
-        <i class="fas fa-user text-xl"></i>
-      </a>
+      
+      <!-- Account Dropdown Section -->
+      <div class="relative group" id="account-dropdown-container">
+        <button id="account-toggle" class="flex items-center space-x-3 p-2 outline-none focus:ring-0 text-white hover:text-[#C5A059] transition-all">
+          <i class="fas fa-user text-xl"></i>
+          <i class="fas fa-chevron-down text-[10px] hidden lg:block text-slate-500 group-hover:text-[#C5A059] transition-transform" id="account-chevron"></i>
+        </button>
+
+        <!-- Dropdown Menu (Desktop) -->
+        <div id="account-menu" class="absolute right-0 top-full pt-4 w-72 z-[200] origin-top opacity-0 scale-y-0 pointer-events-none transition-all duration-300 hidden lg:block">
+          <div class="glass-elevated rounded-[2.5rem] p-8 space-y-6 shadow-[0_40px_100px_rgba(0,0,0,0.8)] border border-white/10 bg-[#0F172A]">
+            {% if customer %}
+              <div class="flex items-center space-x-4 border-b border-white/5 pb-6">
+                 <div class="w-12 h-12 rounded-2xl bg-[#C5A059] flex items-center justify-center text-slate-950 font-black text-xl shadow-lg">
+                    {{ customer.first_name | slice: 0 }}
+                 </div>
+                 <div class="min-w-0">
+                    <p class="text-sm font-black text-white truncate mb-1">{{ customer.name }}</p>
+                    <div class="flex items-center space-x-2 text-[#C5A059]">
+                       <i class="fas fa-shield-alt text-[10px]"></i>
+                       <span class="text-[9px] font-black uppercase tracking-widest">VIP Member</span>
+                    </div>
+                 </div>
+              </div>
+
+              <div class="space-y-3">
+                <a href="/account" class="flex items-center space-x-4 text-xs font-bold text-slate-300 hover:text-[#C5A059] transition-all p-3 rounded-2xl hover:bg-white/5">
+                  <i class="fas fa-box text-sm"></i><span>Track Orders</span>
+                </a>
+                <a href="/account/addresses" class="flex items-center space-x-4 text-xs font-bold text-slate-300 hover:text-[#C5A059] transition-all p-3 rounded-2xl hover:bg-white/5">
+                  <i class="fas fa-map-marker-alt text-sm"></i><span>My Addresses</span>
+                </a>
+                <a href="/account" class="flex items-center space-x-4 text-xs font-bold text-slate-300 hover:text-[#C5A059] transition-all p-3 rounded-2xl hover:bg-white/5">
+                  <i class="fas fa-cog text-sm"></i><span>Settings</span>
+                </a>
+              </div>
+
+              <a href="/account/logout" class="w-full flex items-center justify-between text-xs font-black uppercase tracking-widest text-red-400 p-4 rounded-2xl bg-red-500/5 hover:bg-red-500/10 transition-all border border-red-500/10 mt-2">
+                <span>Sign Out</span>
+                <i class="fas fa-sign-out-alt"></i>
+              </a>
+            {% else %}
+              <div class="text-center py-4 space-y-6">
+                 <p class="text-sm text-slate-400 font-medium">Possess an account?</p>
+                 <a href="/account/login" class="block w-full bg-[#C5A059] text-slate-950 py-5 rounded-2xl font-black uppercase text-[10px] tracking-[0.3em] shadow-xl">
+                   Authenticate
+                 </a>
+                 <a href="/account/register" class="block text-[9px] font-black uppercase tracking-widest text-[#C5A059] hover:underline">Establish Profile</a>
+              </div>
+            {% endif %}
+          </div>
+        </div>
+      </div>
+
+      <!-- Mobile Menu Toggle -->
+      <button id="mobile-menu-toggle" class="lg:hidden p-2 text-white active:scale-90 transition-transform">
+         <i class="fas fa-bars text-2xl" id="menu-icon"></i>
+      </button>
     </div>
   </div>
-</nav>
+</header>
+
+<!-- Mobile Menu Drawer (Overlay) -->
+<div id="mobile-menu-drawer" class="fixed inset-0 z-[150] lg:hidden opacity-0 pointer-events-none transition-all duration-500">
+  <div id="mobile-menu-backdrop" class="absolute inset-0 bg-black/80 backdrop-blur-md"></div>
+  <div id="mobile-menu-content" class="absolute top-0 right-0 h-full w-[85vw] max-w-sm glass-elevated flex flex-col translate-x-full border-l border-white/10 overflow-hidden">
+    <div class="p-8 flex justify-between items-center border-b border-white/5 bg-slate-900/40">
+      <div class="flex items-center space-x-3">
+        <span class="font-playfair text-xl font-black italic text-white tracking-tighter">
+          Smart<span class="text-[#C5A059]">Duka</span>
+        </span>
+      </div>
+      <button id="mobile-menu-close" class="w-12 h-12 rounded-full border border-white/10 flex items-center justify-center text-white active:scale-90">
+        <i class="fas fa-times"></i>
+      </button>
+    </div>
+
+    <div class="flex-grow overflow-y-auto p-8 space-y-10 bg-slate-950/20">
+      <div class="space-y-6">
+        <span class="text-[10px] font-black uppercase tracking-[0.4em] text-slate-600 mb-6 block">Navigation</span>
+        {% for link in linklists.main-menu.links %}
+          <a href="{{ link.url }}" class="flex items-center justify-between py-5 border-b border-white/5 group">
+            <span class="font-playfair text-2xl font-black italic text-white group-hover:text-[#C5A059] transition-colors">{{ link.title }}</span>
+            <i class="fas fa-chevron-right text-slate-700 group-hover:text-[#C5A059] transition-all"></i>
+          </a>
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+</div>
 
 {% schema %}
 {
