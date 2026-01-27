@@ -1,20 +1,32 @@
 
 <div class="group">
   <a href="{{ product.url }}" class="block">
-    <div class="relative aspect-[4/5] bg-[#0F172A] rounded-[3rem] p-10 mb-8 overflow-hidden flex items-center justify-center border border-white/5 transition-all duration-700 group-hover:shadow-[0_40px_80px_rgba(0,0,0,0.6)] group-hover:-translate-y-2">
-      <img src="{{ product.featured_image | img_url: '600x600' }}" class="max-w-full max-h-full object-contain group-hover:scale-110 transition-transform duration-1000">
+    <div class="relative aspect-[4/5] bg-[#020617] rounded-[3rem] p-10 mb-8 overflow-hidden flex items-center justify-center border border-white/5 transition-all duration-700 group-hover:shadow-[0_40px_80px_rgba(0,0,0,0.6)] group-hover:-translate-y-2">
       
-      <div class="absolute bottom-8 left-8 right-8 translate-y-20 group-hover:translate-y-0 transition-transform duration-500">
-        <div class="bg-[#C5A059] text-slate-950 py-4 rounded-2xl text-center text-[9px] font-black uppercase tracking-widest">
-          View Detail
+      <!-- Rank Badge -->
+      {% if index %}
+      <div class="absolute top-8 left-8 z-10">
+        <span class="text-[#C5A059] font-mono text-[9px] tracking-[0.5em] block">0{{ index }}</span>
+      </div>
+      {% endif %}
+
+      <img src="{{ product.featured_image | img_url: '800x800' }}" class="max-w-full max-h-full object-contain group-hover:scale-110 transition-transform duration-1000 z-20">
+      
+      <div class="absolute bottom-8 left-8 right-8 translate-y-20 group-hover:translate-y-0 transition-transform duration-500 z-30">
+        <div class="bg-[#C5A059] text-slate-950 py-5 rounded-2xl text-center text-[10px] font-black uppercase tracking-[0.3em]">
+          Acquire Asset
         </div>
       </div>
     </div>
     
-    <div class="space-y-2 px-4 text-center">
-      <span class="text-[#C5A059] text-[9px] font-black uppercase tracking-[0.3em]">{{ product.vendor }}</span>
+    <div class="space-y-2 px-4">
+      <div class="flex items-center space-x-2 text-[9px] font-black uppercase tracking-widest text-slate-500">
+        <span>{{ product.vendor }}</span>
+        <div class="w-1 h-1 bg-[#C5A059]/40 rounded-full"></div>
+        <span>Official Unit</span>
+      </div>
       <h3 class="text-white font-bold text-lg line-clamp-1 group-hover:text-[#C5A059] transition-colors">{{ product.title }}</h3>
-      <p class="text-xl font-black text-white tracking-tighter">{{ product.price | money }}</p>
+      <p class="text-2xl font-black text-white tracking-tighter">{{ product.price | money }}</p>
     </div>
   </a>
 </div>

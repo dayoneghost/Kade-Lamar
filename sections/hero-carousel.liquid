@@ -1,24 +1,37 @@
 
-<section class="relative w-full h-[80vh] bg-[#020617] overflow-hidden flex items-center">
+<section class="relative w-full h-[85vh] bg-[#020617] overflow-hidden flex items-center">
   <div class="absolute inset-0 z-0">
     {% if section.settings.image != blank %}
       <img src="{{ section.settings.image | img_url: '2000x' }}" class="w-full h-full object-cover opacity-40">
     {% else %}
-      <div class="w-full h-full bg-slate-900 opacity-40"></div>
+      <div class="w-full h-full bg-slate-900 opacity-20"></div>
     {% endif %}
-    <div class="absolute inset-0 bg-gradient-to-t from-[#020617] via-transparent to-transparent"></div>
+    <div class="absolute inset-0 bg-gradient-to-t from-[#0F172A] via-transparent to-transparent"></div>
+    <div class="absolute inset-0 bg-gradient-to-r from-[#0F172A] via-transparent to-transparent"></div>
   </div>
 
-  <div class="container mx-auto px-12 relative z-10">
-    <div class="max-w-4xl">
-      <span class="text-[#C5A059] text-[10px] font-black uppercase tracking-[0.8em] mb-8 block">{{ section.settings.subtitle }}</span>
-      <h1 class="text-6xl md:text-9xl font-black text-white font-playfair italic mb-8 leading-[0.9] tracking-tighter">
-        {{ section.settings.title | replace: ' ', '<br/>' }}
-      </h1>
-      <p class="text-slate-300 text-xl mb-12 max-w-xl font-medium">{{ section.settings.description }}</p>
-      <a href="{{ section.settings.link }}" class="inline-block bg-[#C5A059] text-slate-950 px-14 py-6 rounded-full font-black uppercase tracking-[0.3em] text-[10px] hover:bg-white transition-all shadow-2xl">
-        {{ section.settings.button_text }}
-      </a>
+  <div class="container mx-auto px-6 md:px-12 relative z-10">
+    <div class="max-w-4xl space-y-10">
+      <div>
+        <span class="text-[#C5A059] text-[10px] font-black uppercase tracking-[0.8em] mb-8 block">
+          {{ section.settings.subtitle }}
+        </span>
+        <h1 class="text-7xl md:text-9xl font-black text-white font-playfair italic mb-8 leading-[0.85] tracking-tighter">
+          {{ section.settings.title | replace: ' ', '<br/>' }}
+        </h1>
+        <p class="text-slate-300 text-xl md:text-2xl mb-12 max-w-xl font-medium leading-relaxed">
+          {{ section.settings.description }}
+        </p>
+        <div class="flex flex-col sm:flex-row items-start sm:items-center space-y-6 sm:space-y-0 sm:space-x-8">
+          <a href="{{ section.settings.link }}" class="bg-[#C5A059] text-slate-950 px-14 py-6 rounded-full font-black uppercase tracking-[0.3em] text-[10px] hover:bg-white transition-all shadow-2xl">
+            {{ section.settings.button_text }}
+          </a>
+          <button class="group flex items-center space-x-4 text-white">
+            <span class="text-[10px] font-black uppercase tracking-[0.3em]">Our Story</span>
+            <div class="w-12 h-[1px] bg-white/30 group-hover:w-20 group-hover:bg-[#C5A059] transition-all"></div>
+          </button>
+        </div>
+      </div>
     </div>
   </div>
 </section>
@@ -27,7 +40,7 @@
 {
   "name": "Hero Carousel",
   "settings": [
-    { "type": "text", "id": "title", "label": "Title", "default": "Upgrade Your Home" },
+    { "type": "text", "id": "title", "label": "Title", "default": "Your Home" },
     { "type": "text", "id": "subtitle", "label": "Subtitle", "default": "New Arrivals" },
     { "type": "textarea", "id": "description", "label": "Description", "default": "Premium electronics from top brands like Hisense and Apple." },
     { "type": "image_picker", "id": "image", "label": "Background Image" },

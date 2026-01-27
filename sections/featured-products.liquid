@@ -1,17 +1,21 @@
 
-<section class="py-32 bg-[#020617]">
-  <div class="container mx-auto px-12">
-    <div class="flex justify-between items-end mb-20">
-      <div>
-        <span class="text-[#C5A059] text-[10px] font-black uppercase tracking-[0.5em] mb-4 block">Our Inventory</span>
-        <h2 class="text-6xl font-black font-playfair italic text-white tracking-tighter">Latest <span class="text-slate-500">Vault.</span></h2>
+<section class="py-32 bg-[#0F172A] relative overflow-hidden">
+  <div class="absolute top-0 left-0 w-full h-64 bg-gradient-to-b from-[#020617] to-transparent opacity-50"></div>
+  <div class="container mx-auto px-6 md:px-12 relative z-10">
+    <div class="flex flex-col md:flex-row justify-between items-start md:items-end mb-24">
+      <div class="max-w-3xl">
+        <span class="text-[#C5A059] text-[10px] font-black uppercase tracking-[0.5em] mb-6 block">Our Collection</span>
+        <h2 class="text-6xl md:text-8xl font-black tracking-tighter mb-8 font-playfair italic leading-none text-white">Latest <br/><span class="text-slate-400">Inventory.</span></h2>
+        <p class="text-lg md:text-xl text-slate-400 font-medium max-w-xl">Browse authentic electronics curated for modern Kenyan living.</p>
       </div>
-      <a href="/collections/all" class="text-[10px] font-black uppercase tracking-widest text-white border-b border-[#C5A059] pb-2">Full Catalog</a>
+      <a href="/collections/all" class="text-[10px] font-black uppercase tracking-widest text-white border-b border-[#C5A059] pb-4 group">
+        Full Collection <i class="fas fa-arrow-right ml-3 group-hover:translate-x-2 transition-transform"></i>
+      </a>
     </div>
 
-    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
+    <div class="grid grid-cols-2 lg:grid-cols-4 gap-x-8 gap-y-24">
       {% for product in collections[section.settings.collection].products limit: 8 %}
-        {% render 'product-card', product: product %}
+        {% render 'product-card', product: product, index: forloop.index %}
       {% endfor %}
     </div>
   </div>
