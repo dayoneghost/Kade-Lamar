@@ -1,4 +1,12 @@
-
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "current": {
     "sections": {
@@ -11,11 +19,67 @@
       "footer": {
         "type": "footer",
         "settings": {}
+      },
+      "hero-carousel": {
+        "type": "hero-carousel",
+        "blocks": {
+          "slide_DAz3gV": {
+            "type": "slide",
+            "settings": {
+              "title": "Your Home",
+              "subtitle": "New Arrivals",
+              "description": "Premium electronics from top brands like Hisense and Apple.",
+              "link": "",
+              "button_text": "Shop Now"
+            }
+          },
+          "slide_x6E97N": {
+            "type": "slide",
+            "settings": {
+              "title": "Your Home",
+              "subtitle": "New Arrivals",
+              "description": "Premium electronics from top brands like Hisense and Apple.",
+              "link": "",
+              "button_text": "Shop Now"
+            }
+          },
+          "slide_9Aqwth": {
+            "type": "slide",
+            "settings": {
+              "title": "Your Home",
+              "subtitle": "New Arrivals",
+              "description": "Premium electronics from top brands like Hisense and Apple.",
+              "link": "",
+              "button_text": "Shop Now"
+            }
+          }
+        },
+        "block_order": [
+          "slide_DAz3gV",
+          "slide_x6E97N",
+          "slide_9Aqwth"
+        ],
+        "settings": {}
+      },
+      "featured-categories": {
+        "type": "featured-categories",
+        "settings": {}
+      },
+      "featured-products": {
+        "type": "featured-products",
+        "settings": {
+          "collection": ""
+        }
+      },
+      "store-reviews": {
+        "type": "store-reviews",
+        "settings": {}
+      },
+      "location-map": {
+        "type": "location-map",
+        "settings": {}
       }
     },
-    "content_for_index": [
-      "hero-carousel",
-      "featured-products"
-    ]
+    "content_for_index": []
   }
 }
