@@ -1,0 +1,11 @@
+{
+  "name": "Smart Duka Premium Shopify Theme",
+  "version": "2.1.0",
+  "author": "Smart Duka Technical Lead",
+  "description": "High-conversion retail theme for Kenyan electronics stores. Features professional installation booking and real-time order tracking.",
+  "requestFramePermissions": [
+    "camera",
+    "microphone",
+    "geolocation"
+  ]
+}

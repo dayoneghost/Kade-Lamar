@@ -1,0 +1,16 @@
+
+{
+  "name": "smart-duka-electronics",
+  "version": "1.0.0",
+  "description": "Premium Kenyan Electronics Store",
+  "dependencies": {
+    "animejs": "^3.2.2",
+    "axios": "^1.7.9",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0",
+    "react-router-dom": "^7.1.0",
+    "@tanstack/react-query": "^5.62.0",
+    "jspdf": "^2.5.1",
+    "html2canvas": "^1.4.1"
+  }
+}

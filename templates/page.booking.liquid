@@ -1,0 +1,64 @@
+
+<div class="min-h-screen pt-32 pb-40 px-6">
+  <div class="container mx-auto max-w-5xl">
+    <header class="text-center mb-20">
+       <h1 class="text-4xl md:text-8xl font-black font-playfair italic tracking-tighter text-white">Bespoke <br/><span class="text-slate-400">Installation.</span></h1>
+       <p class="text-slate-400 mt-6 max-w-xl mx-auto">Precision mounting for your Hisense and Samsung assets in Nairobi.</p>
+    </header>
+
+    <div class="grid lg:grid-cols-2 gap-20">
+      <div class="bg-white/5 p-12 rounded-[3rem] border border-white/10">
+        <form id="booking-form" class="space-y-8">
+          <div class="space-y-3">
+             <label class="text-[9px] font-black uppercase tracking-widest text-slate-500">TV Screen Size</label>
+             <select id="tv-size" class="w-full bg-slate-950 border border-white/5 rounded-2xl p-5 text-white outline-none">
+                <option value="1500">32" - 55" (KSh 1,500)</option>
+                <option value="2500">65" - 75" (KSh 2,500)</option>
+                <option value="5000">85"+ (KSh 5,000)</option>
+             </select>
+          </div>
+          <div class="space-y-3">
+             <label class="text-[9px] font-black uppercase tracking-widest text-slate-500">Bracket Style</label>
+             <select id="bracket-type" class="w-full bg-slate-950 border border-white/5 rounded-2xl p-5 text-white outline-none">
+                <option value="1000">Fixed Flush (KSh 1,000)</option>
+                <option value="2500">Full Motion Swivel (KSh 2,500)</option>
+             </select>
+          </div>
+          <div class="space-y-3">
+             <label class="text-[9px] font-black uppercase tracking-widest text-slate-500">Preferred Date</label>
+             <input type="date" required class="w-full bg-slate-950 border border-white/5 rounded-2xl p-5 text-white outline-none">
+          </div>
+          <button type="submit" class="w-full bg-[#C5A059] text-slate-950 py-6 rounded-2xl font-black uppercase tracking-[0.4em] text-[10px]">Confirm Installation Slot</button>
+        </form>
+      </div>
+
+      <div class="bg-[#C5A059] p-12 rounded-[3rem] text-slate-950">
+         <h3 className="text-[10px] font-black uppercase tracking-widest mb-10 border-b border-black/10 pb-4">Service Quote</h3>
+         <div class="space-y-6">
+            <div class="flex justify-between"><span>Labor Fee</span><span id="labor-total">KSh 1,500</span></div>
+            <div class="flex justify-between"><span>Hardware</span><span id="hardware-total">KSh 1,000</span></div>
+            <div class="flex justify-between"><span>Logistics</span><span>KSh 200</span></div>
+            <div class="flex justify-between border-t border-black/20 pt-6"><span class="font-black">Final Total</span><span id="final-total" class="text-3xl font-black">KSh 2,700</span></div>
+         </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  const tvSize = document.getElementById('tv-size');
+  const bracketType = document.getElementById('bracket-type');
+  const finalTotal = document.getElementById('final-total');
+
+  function updatePrices() {
+    const labor = parseInt(tvSize.value);
+    const hardware = parseInt(bracketType.value);
+    const total = labor + hardware + 200;
+    document.getElementById('labor-total').innerText = 'KSh ' + labor.toLocaleString();
+    document.getElementById('hardware-total').innerText = 'KSh ' + hardware.toLocaleString();
+    finalTotal.innerText = 'KSh ' + total.toLocaleString();
+  }
+
+  tvSize.addEventListener('change', updatePrices);
+  bracketType.addEventListener('change', updatePrices);
+</script>

@@ -1,0 +1,40 @@
+
+:root {
+  --gold: #C5A059;
+  --obsidian: #020617;
+}
+
+body {
+  font-family: 'Inter', sans-serif;
+  scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
+}
+
+.font-playfair { font-family: 'Playfair Display', serif; }
+
+.glass-elevated {
+  background: rgba(15, 23, 42, 0.7);
+  backdrop-filter: blur(24px) saturate(160%);
+  -webkit-backdrop-filter: blur(24px) saturate(160%);
+  border: 1px solid rgba(197, 160, 89, 0.2);
+}
+
+.gradient-bg {
+  background: radial-gradient(circle at 70% 20%, #1e293b 0%, #0F172A 50%, #020617 100%);
+}
+
+input[type="date"]::-webkit-calendar-picker-indicator {
+  filter: invert(1);
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: #020617;
+}
+::-webkit-scrollbar-thumb {
+  background: #C5A059;
+  border-radius: 10px;
+}
