@@ -63,6 +63,31 @@
       },
       "featured-categories": {
         "type": "featured-categories",
+        "blocks": {
+          "collection_YaWfE6": {
+            "type": "collection",
+            "settings": {
+              "collection": ""
+            }
+          },
+          "collection_6EiYEQ": {
+            "type": "collection",
+            "settings": {
+              "collection": ""
+            }
+          },
+          "collection_KANWCr": {
+            "type": "collection",
+            "settings": {
+              "collection": ""
+            }
+          }
+        },
+        "block_order": [
+          "collection_YaWfE6",
+          "collection_6EiYEQ",
+          "collection_KANWCr"
+        ],
         "settings": {}
       },
       "featured-products": {
